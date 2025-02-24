@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เที่ยวทั่วไทย - แนะนำสถานที่ท่องเที่ยวในจังหวัด</title>
+    <style>
+        /* ตั้งค่าพื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        body {
+            background-color: #e4e4e4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ส่วนหัว */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        /* เมนู */
+        nav {
+            background-color: #006064;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 1rem;
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: #80DEEA;
+        }
+        
+        /* เนื้อหาหลัก */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #006064;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #00BCD4;
+            margin: 0.5rem auto;
+        }
+        
+        /* การ์ดสถานที่ท่องเที่ยว */
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .destination-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00838F;
+        }
+        
+        .card-location {
+            display: flex;
+            align-items: center;
+            color: #757575;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .card-location:before {
+            content: "📍";
+            margin-right: 0.5rem;
+        }
+        
+        .card-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #00BCD4;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #00838F;
+        }
+        
+        .btn-center {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        /* แผนที่และเส้นทาง */
+        .map-section {
+            background-color: white;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .map-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .map-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* รีวิวและคอมเมนต์ */
+        .reviews {
+            margin: 3rem 0;
+        }
+        
+        .review-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .reviewer-info {
+            flex: 1;
+        }
+        
+        .reviewer-name {
+            font-weight: bold;
+            color: #00838F;
+        }
+        
+        .reviewer-date {
+            font-size: 0.8rem;
+            color: #757575;
+        }
+        
+        .rating {
+            color: #FFC107;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ส่วนท้าย */
+        footer {
+            background-color: #00838F;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            padding: 0 1rem;
+        }
+        
+        .footer-title {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-title:after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: #4DD0E1;
+            margin-top: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #005662;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #4DD0E1;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* รองรับอุปกรณ์มือถือ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .menu li {
+                margin: 0 0.5rem;
+            }
+            
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ส่วนหัว -->
+    <header>
+        <h1>เที่ยวทั่วไทย</h1>
+        <p class="subtitle">ค้นพบสถานที่ท่องเที่ยวสุดประทับใจในจังหวัดของเรา ทั้งธรรมชาติ วัฒนธรรม และอาหารขึ้นชื่อที่ต้องมาสัมผัสด้วยตัวคุณเอง</p>
+        <a href="#destinations" class="btn">ดูสถานที่แนะนำ</a>
+    </header>
+    
+    <!-- เมนู -->
+    <nav>
+        <ul class="menu">
+            <li><a href="#destinations">สถานที่ท่องเที่ยว</a></li>
+            <li><a href="#routes">เส้นทางท่องเที่ยว</a></li>
+            <li><a href="#food">อาหารท้องถิ่น</a></li>
+            <li><a href="https://www.agoda.com/th-th/city/chanthaburi-th.html?cid=1844104&ds=HqI6YqO7hS44brZn">ที่พัก</a></li>
+            <li><a href="https://calendar.kapook.com/">เทศกาล</a></li>
+            <li><a href="#reviews">รีวิวจากนักท่องเที่ยว</a></li>
+        </ul>
+    </nav>
+    
+    <!-- เนื้อหาหลัก -->
+    <div class="container">
+        <section class="intro">
+            <h2 class="section-title">ยินดีต้อนรับสู่จังหวัดของเรา</h2>
+            <p>จังหวัดของเรามีแหล่งท่องเที่ยวที่หลากหลาย ไม่ว่าจะเป็นธรรมชาติอันงดงาม วัฒนธรรมอันเก่าแก่ หรือเทศกาลสุดสนุกตลอดทั้งปี เราได้รวบรวมสถานที่ท่องเที่ยวยอดนิยมและสถานที่ซ่อนเร้นที่รอให้คุณไปค้นพบ พร้อมทั้งแนะนำเส้นทางท่องเที่ยว ที่พัก และอาหารท้องถิ่นที่ต้องลิ้มลอง</p>
+        </section>
+        
+        <!-- สถานที่ท่องเที่ยว -->
+        <section id="destinations">
+            <h2 class="section-title">สถานที่ท่องเที่ยวแนะนำ</h2>
+            <div class="destination-grid">
+                <!-- สถานที่ท่องเที่ยว 1 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/asd.jpeg.jpg" alt="อุทยานแห่งชาติ">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">อุทยานแห่งชาติป่าเขาใหญ่</h3>
+                        <p class="card-location">อำเภอปากช่อง</p>
+                        <p class="card-description">มรดกโลกทางธรรมชาติที่อุดมสมบูรณ์ด้วยพันธุ์พืชและสัตว์ป่านานาชนิด เหมาะสำหรับการเดินป่า ดูนก ชมน้ำตก และตั้งแคมป์ท่ามกลางธรรมชาติ</p>
+                        <a href="khaoyai.html" class="btn">ดูรายละเอียดตรงนี้</a>
+                    </div>
+                </div>
+                
+                <!-- สถานที่ท่องเที่ยว 2 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/11.jpeg.jpg" alt="วัดเก่าแก่">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">วัดมหาธาตุ</h3>
+                        <p class="card-location">อำเภอเมือง</p>
+                        <p class="card-description">โบราณสถานสำคัญที่มีประวัติศาสตร์ยาวนานกว่า 800 ปี เป็นที่ประดิษฐานพระบรมสารีริกธาตุและพระพุทธรูปศักดิ์สิทธิ์ สะท้อนศิลปะวัฒนธรรมไทยโบราณ</p>
+                        <a href="mahatat.html" class="btn">ดูรายละเอียดจ้า</a>
+                    </div>
+                </div>
+                
+                <!-- สถานที่ท่องเที่ยว 3 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/123.jpg" alt="ตลาดน้ำ">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ตลาดน้ำคลองบางน้อย</h3>
+                        <p class="card-location">อำเภอบางคล้า</p>
+                        <p class="card-description">ตลาดน้ำเก่าแก่ที่ยังคงวิถีชีวิตดั้งเดิมของชาวบ้าน ที่นี่คุณจะได้ลิ้มรสอาหารพื้นบ้าน ชมการค้าขายทางน้ำ และสัมผัสมนต์เสน่ห์แห่งวิถีชีวิตริมน้ำ</p>
+                        <a href="market.html" class="btn">ดูรายละเอียดครับบ</a>
+                    </div>
+                </div>
+                
+                <!-- สถานที่ท่องเที่ยว 4 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/qw.jpg" alt="หาดทราย">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">หาดทรายทอง</h3>
+                        <p class="card-location">อำเภอเมือง</p>
+                        <p class="card-description">ชายหาดทรายขาวละเอียดทอดยาวโค้งเป็นอ่าว น้ำทะเลใสสะอาด เหมาะสำหรับการพักผ่อน เล่นน้ำ หรือดำน้ำชมปะการัง มีร้านอาหารทะเลสดใหม่บริการตลอดแนวชายหาด</p>
+                        <a href="goldB.html" class="btn">ดูรายละเอียดับบบ</a>
+                    </div>
+                </div>
+                
+                <!-- สถานที่ท่องเที่ยว 5 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/ห.jpg" alt="สวนผลไม้">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ตลาดพลอยจันทบุรี</h3>
+                        <p class="card-location">อำเภอท่าใหม่</p>
+                        <p class="card-description">ตลาดพลอยจันทบุรี สถานที่ซื้อขายแลกปลี่ยนอัญมณีมากมายที่มีมาตั้งแต่เก่าแก่ในจังหวัดจันทบุรี นอกจากจะมีการค้าพลอยที่เด่นแล้ว ร้านอาหารนานาชาติในตลาดก็เด่นไม่แพ้กัน</p>
+                        <a href="ploy.html" class="btn">ดูรายละเอียดเลย</a>
+                    </div>
+                </div>
+                
+                <!-- สถานที่ท่องเที่ยว 6 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/พ.jpg" alt="น้ำตก">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">น้ำตกสายรุ้ง</h3>
+                        <p class="card-location">อำเภอแก่งหางแมว</p>
+                        <p class="card-description">น้ำตกสวยงามที่มีน้ำไหลตลอดทั้งปี แบ่งเป็น 7 ชั้น แต่ละชั้นมีความสวยงามแตกต่างกัน เหมาะสำหรับการเล่นน้ำ ปิกนิก และถ่ายภาพท่ามกลางธรรมชาติ</p>
+                        <a href="rainbow.html" class="btn">ดูรายละเอียดด</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+        <!-- แผนที่และเส้นทาง -->
+        <section id="routes" class="map-section">
+            <div class="container">
+                <h2 class="section-title">เส้นทางท่องเที่ยวแนะนำ</h2>
+                <div class="map-container">
+                    <div class="map-content">
+                        <h3>เส้นทาง 3 วัน 2 คืน "สัมผัสวิถีไทย"</h3>
+                        <p>เส้นทางท่องเที่ยวที่รวบรวมประสบการณ์ครบรส ทั้งธรรมชาติ วัฒนธรรม และอาหาร</p>
+                        <ul style="list-style-type: none; margin: 1.5rem 0">
+                            <li style="margin-bottom: 0.5rem">📌 <strong>วันที่ 1:</strong> วัดมหาธาตุ → พิพิธภัณฑ์ท้องถิ่น → ตลาดน้ำคลองบางน้อย</li>
+                            <li style="margin-bottom: 0.5rem">📌 <strong>วันที่ 2:</strong> อุทยานแห่งชาติป่าเขาใหญ่ → น้ำตกสายรุ้ง → แคมป์ปิ้งใต้แสงดาว</li>
+                            <li style="margin-bottom: 0.5rem">📌 <strong>วันที่ 3:</strong> สวนผลไม้ → หาดทรายทอง → ซื้อของฝาก</li>
+                        </ul>
+                        <a href=" https://drive.google.com/drive/folders/1RN_EpmogmR5u-xBIweQlD8K6DT2lj_Ib?usp=sharing" class="btn">ดาวน์โหลดแผนที่ </a>
+                    </div>
+                    <div class="map-image">
+                        <img src="loopab/SAC-20220831-3.jpg" alt="แผนที่เส้นทางท่องเที่ยว" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- อาหารท้องถิ่น -->
+        <section id="food">
+            <h2 class="section-title">อาหารท้องถิ่นห้ามพลาด</h2>
+            <div class="destination-grid">
+                <!-- อาหาร 1 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/r.jpg" alt="อาหารท้องถิ่น">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">แกงหยวกกล้วยใส่ซี่โครงหมู</h3>
+                        <p class="card-location">ร้านครัวคุณยาย, อำเภอเมือง</p>
+                        <p class="card-description">อาหารพื้นบ้านโบราณรสชาติเข้มข้น ใช้หยวกกล้วยอ่อนเป็นวัตถุดิบหลัก เคี่ยวกับซี่โครงหมูจนนุ่ม ปรุงรสด้วยพริกแกงและสมุนไพรพื้นบ้าน</p>
+                    </div>
+                </div>
+                
+                <!-- อาหาร 2 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/ดb.jpg" alt="อาหารท้องถิ่น">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">หมี่กรอบ</h3>
+                        <p class="card-location">ตลาดเช้าหน้าวัดมหาธาตุ</p>
+                        <p class="card-description">อาหารว่างที่มีประวัติมายาวนาน ทำจากเส้นหมี่ทอดกรอบ ราดด้วยน้ำราดรสหวานเปรี้ยว โรยหน้าด้วยกุ้งแห้ง ถั่วงอก ไข่ต้ม และผักชี</p>
+                    </div>
+                </div>
+                
+                <!-- อาหาร 3 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="loopab/v.jpg" alt="อาหารท้องถิ่น">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ข้าวยำใบเหลียง</h3>
+                        <p class="card-location">ร้านริมทะเล, หาดทรายทอง</p>
+                        <p class="card-description">อาหารพื้นถิ่นที่ใช้ใบเหลียงซึ่งเป็นผักพื้นบ้านทางภาคใต้ นำมาคลุกกับข้าวสวยและเครื่องปรุงรสเปรี้ยวหวานเผ็ด เสิร์ฟพร้อมผักสดและปลาทอดกรอบ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- รีวิวจากนักท่องเที่ยว -->
+        <section id="reviews" class="reviews">
+            <h2 class="section-title">รีวิวจากนักท่องเที่ยว</h2>
+            
+            <!-- รีวิว 1 -->
+            <div class="review-card">
+                <div class="reviewer">
+                    <div class="reviewer-avatar">👩</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">น้ำใส มองไกล</div>
+                        <div class="reviewer-date">เยี่ยมชมเมื่อ มีนาคม 2025</div>
+                    </div>
+                </div>
+                <div class="rating">★★★★★</div>
+                <p>"ประทับใจมากกับการมาเที่ยวจังหวัดนี้ ธรรมชาติสวยงามมาก โดยเฉพาะน้ำตกสายรุ้งที่น้ำใสมาก ได้ภาพสวยๆ กลับไปเพียบ อาหารการกินก็อร่อย คนท้องถิ่นใจดีและเป็นมิตร แนะนำให้มาช่วงต้นฝนที่น้ำตกสวยที่สุด"</p>
+            </div>
+            
+            <!-- รีวิว 2 -->
+            <div class="review-card">
+                <div class="reviewer">
+                    <div class="reviewer-avatar">👨</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">สมชาย นักเดินทาง</div>
+                        <div class="reviewer-date">เยี่ยมชมเมื่อ มกราคม 2025</div>
+                    </div>
+                </div>
+                <div class="rating">★★★★☆</div>
+                <p>"ตลาดน้ำคลองบางน้อยเป็นไฮไลท์ของทริปนี้เลย ได้เห็นวิถีชีวิตดั้งเดิมที่หาดูได้ยากในปัจจุบัน อาหารในตลาดอร่อยทุกร้าน โดยเฉพาะขนมไทยโบราณ แต่ที่พักในบริเวณนั้นยังมีไม่มาก ควรจองล่วงหน้า"</p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- ส่วนท้าย -->
+    <footer>
+        <div class="footer-content">
+            <!-- เกี่ยวกับเรา -->
+            <div class="footer-section">
+                <h3 class="footer-title">เกี่ยวกับเรา</h3>
+                <p>เว็บไซต์แนะนำการท่องเที่ยวในจังหวัดของเรา มุ่งมั่นนำเสนอข้อมูลที่เป็นประโยชน์สำหรับนักท่องเที่ยวทั้งชาวไทยและชาวต่างชาติเพื่อเกรดเอของเรา</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1JY46gjAAz/" class="social-icon">f</a>
+                    <a href="https://www.instagram.com/odinary_tam/" class="social-icon">ig</a>
+                    
