@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>น้ำตกสายรุ้ง จันทบุรี | แหล่งท่องเที่ยวธรรมชาติที่สวยงาม</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #452121;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(5, 251, 239, 0.5), rgba(57, 54, 54, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #5c9a83;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: #008c5a;
+            transform: scale(1.05);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #00a86b;
+        }
+        
+        .highlight {
+            color: #00a86b;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #00a86b;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: #8f3838;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>น้ำตกสายรุ้ง <span class="highlight">จันทบุรี</span></h1>
+        <p class="subtitle">สัมผัสความมหัศจรรย์ของสายน้ำตกที่สะท้อนแสงเป็นสีรุ้งสวยงาม</p>
+        <a href="#location" class="cta-button">วางแผนการเดินทาง</a>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>เกี่ยวกับ<span class="highlight">น้ำตกสายรุ้ง</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('data:image/jpeg;base64,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');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ความมหัศจรรย์แห่งธรรมชาติ</h3>
+                        <p>น้ำตกสายรุ้งเป็นหนึ่งในน้ำตกที่สวยงามที่สุดในจังหวัดจันทบุรี ตั้งอยู่ในเขตอุทยานแห่งชาติเขาคิชฌกูฏ น้ำตกแห่งนี้มีความพิเศษตรงที่เมื่อแสงอาทิตย์ตกกระทบละอองน้ำในช่วงเวลาที่เหมาะสม จะเกิดเป็นประกายรุ้งสวยงามให้ได้ชม ทำให้เป็นที่มาของชื่อ "น้ำตกสายรุ้ง"</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('data:image/jpeg;base64,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');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ระบบนิเวศอันอุดมสมบูรณ์</h3>
+                        <p>พื้นที่โดยรอบน้ำตกมีความอุดมสมบูรณ์ของพืชพรรณและสัตว์ป่านานาชนิด อากาศเย็นสบายตลอดทั้งปี คุณสามารถเดินสำรวจเส้นทางธรรมชาติ สัมผัสกับความร่มรื่นของป่าเขา และฟังเสียงน้ำไหลที่ให้ความรู้สึกผ่อนคลาย</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_nOnt1TnyJIszSS6I9MGkG51HdGR-z7Dhg&s');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">กิจกรรมน่าสนใจ</h3>
+                        <p>นักท่องเที่ยวสามารถเพลิดเพลินกับกิจกรรมต่างๆ ได้ทั้งวัน ไม่ว่าจะเป็นการเล่นน้ำ การปิกนิก การถ่ายภาพธรรมชาติ หรือการเดินป่าศึกษาธรรมชาติ เหมาะสำหรับครอบครัวและผู้ที่ชื่นชอบการท่องเที่ยวเชิงอนุรักษ์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="highlights" style="background-color: #e9f7f2;">
+        <div class="container">
+            <h2>ไฮไลท์<span class="highlight">น่าประทับใจ</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-sun"></i> ช่วงเวลาแห่งสายรุ้ง</h3>
+                        <p>ช่วงเวลาที่ดีที่สุดในการชมปรากฏการณ์สายรุ้งคือช่วงเช้าประมาณ 7.00-9.00 น. หรือช่วงบ่ายประมาณ 14.00-16.00 น. เมื่อแสงอาทิตย์ตกกระทบกับละอองน้ำในมุมที่เหมาะสม</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-water"></i> แอ่งน้ำธรรมชาติ</h3>
+                        <p>ที่น้ำตกมีแอ่งน้ำธรรมชาติหลายแห่งที่นักท่องเที่ยวสามารถลงเล่นน้ำได้อย่างปลอดภัย แต่ควรระมัดระวังบริเวณที่น้ำไหลเชี่ยวและควรปฏิบัติตามป้ายเตือนอย่างเคร่งครัด</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-hiking"></i> เส้นทางเดินป่า</h3>
+                        <p>มีเส้นทางเดินศึกษาธรรมชาติที่ได้รับการดูแลอย่างดี ระยะทางประมาณ 1.5 กิโลเมตร ใช้เวลาเดินประมาณ 30-45 นาที เหมาะสำหรับผู้ที่ต้องการสัมผัสบรรยากาศป่าเขาอย่างใกล้ชิด</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="loopab/รุ้ง.jpg" alt="ทัศนียภาพน้ำตกสายรุ้ง" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="loopab/nr.jpg" alt="ปรากฏการณ์สายรุ้งที่น้ำตก" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="loopab/iii.jpg" alt="บรรยากาศโดยรอบน้ำตก" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="loopab/ttt.jpg" alt="กิจกรรมท่องเที่ยวที่น้ำตก" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="tips">
+        <div class="container">
+            <h2>คำแนะนำ<span class="highlight">สำหรับนักท่องเที่ยว</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-clock"></i> ช่วงเวลาที่เหมาะสม</h3>
+                        <p>
+                            <strong>ฤดูกาลที่ดีที่สุด:</strong> เดือนพฤศจิกายน-เมษายน เป็นช่วงที่น้ำใส และมีโอกาสเห็นสายรุ้งได้ชัดเจน<br>
+                            <strong>เวลาเปิด-ปิด:</strong> 08.00-17.00 น. ทุกวัน<br>
+                            <strong>ค่าเข้าชม:</strong> ผู้ใหญ่ 40 บาท เด็ก 20 บาท (รวมค่าเข้าอุทยานฯ)
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-suitcase"></i> สิ่งที่ควรเตรียม</h3>
+                        <p>
+                            - เสื้อผ้าที่สวมใส่สบาย และรองเท้าที่เหมาะกับการเดินในป่า<br>
+                            - ชุดว่ายน้ำ และผ้าเช็ดตัว (หากต้องการเล่นน้ำ)<br>
+                            - ครีมกันแดด หมวก และแว่นตากันแดด<br>
+                            - อาหารและเครื่องดื่ม (มีร้านค้าบริการแต่ราคาอาจสูงกว่าปกติ)<br>
+                            - กล้องถ่ายรูปเพื่อบันทึกความประทับใจ<br>
+                            - ยาประจำตัวและชุดปฐมพยาบาลเบื้องต้น
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" style="background-color: #e9f7f2;">
+        <div class="container">
+            <h2>แผนที่<span class="highlight">และการเดินทาง</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-map-marked-alt"></i> ที่ตั้ง</h3>
+                        <p>น้ำตกสายรุ้งตั้งอยู่ในเขตอุทยานแห่งชาติเขาคิชฌกูฏ ตำบลพลวง อำเภอเขาคิชฌกูฏ จังหวัดจันทบุรี ห่างจากตัวเมืองจันทบุรีประมาณ 30 กิโลเมตร</p>
+                        <br>
+                        <h3 class="card-title"><i class="fas fa-car"></i> การเดินทาง</h3>
+                        <p>
+                            <strong>โดยรถยนต์ส่วนตัว:</strong> จากตัวเมืองจันทบุรี ใช้ทางหลวงหมายเลข 3 (ถนนสุขุมวิท) มุ่งหน้าไปทางอำเภอเขาคิชฌกูฏ จากนั้นเลี้ยวเข้าสู่ทางหลวงหมายเลข 3249 และตามป้ายบอกทางไปยังอุทยานแห่งชาติเขาคิชฌกูฏ<br><br>
+                            <strong>โดยรถสาธารณะ:</strong> มีรถสองแถวจากตัวเมืองจันทบุรีไปยังอำเภอเขาคิชฌกูฏ จากนั้นต้องต่อรถมอเตอร์ไซค์รับจ้างเข้าไปยังน้ำตก
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.553134265395!2d102.20140591481815!3d12.58451959123452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310471592a11c643%3A0xe121254851c9d43!2sKhao%20Khitchakut%20National%20Park!5e0!3m2!1sen!2sth!4v1609324882543!5m2!1sen!2sth" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 น้ำตกสายรุ้ง จันทบุรี | เว็บไซต์แนะนำสถานที่ท่องเที่ยวธรรมชาติ</p>
+            <p>ติดต่อสอบถามข้อมูลเพิ่มเติม: อุทยานแห่งชาติเขาคิชฌกูฏ โทร. 039-XXX-XXX</p>
+            <div class="footer-links">
+                <a href="#about">เกี่ยวกับน้ำตก</a>
+                <a href="#highlights">ไฮไลท์</a>
+                <a href="#tips">คำแนะนำ</a>
+                <a href="#location">แผนที่และการเดินทาง</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

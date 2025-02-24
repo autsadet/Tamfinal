@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตลาดวัดคลองบางน้อย</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 400px;
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 18, 18, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-box h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contact {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>ตลาดวัดคลองบางน้อย</h1>
+            <p>ตลาดน้ำเก่าแก่ริมคลองบางน้อย จังหวัดสมุทรสงคราม</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2>เกี่ยวกับตลาด</h2>
+            <p>ตลาดวัดคลองบางน้อยเป็นตลาดเก่าแก่ริมน้ำที่มีประวัติศาสตร์ยาวนานกว่า 100 ปี ตั้งอยู่ในอำเภอบางคนที จังหวัดสมุทรสงคราม เป็นแหล่งค้าขายที่สำคัญของชุมชนริมน้ำ ที่ยังคงรักษาเสน่ห์ของวิถีชีวิตดั้งเดิมไว้ได้อย่างสมบูรณ์</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <img src="loopab/ๆไ.jpg" alt="อาหารท้องถิ่น">
+                    <div class="card-content">
+                        <h3>อาหารท้องถิ่น</h3>
+                        <p>สัมผัสรสชาติอาหารท้องถิ่นแท้ๆ ทั้งขนมไทยโบราณ อาหารพื้นบ้าน และผลไม้ตามฤดูกาล</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="loopab/สม.jpg" alt="สินค้าพื้นเมือง">
+                    <div class="card-content">
+                        <h3>สินค้าพื้นเมือง</h3>
+                        <p>เลือกซื้อสินค้าพื้นเมือง หัตถกรรมท้องถิ่น และของที่ระลึกจากชาวบ้านในชุมชน</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="loopab/ตน.jpg" alt="วิถีชีวิตริมน้ำ">
+                    <div class="card-content">
+                        <h3>วิถีชีวิตริมน้ำ</h3>
+                        <p>สัมผัสบรรยากาศวิถีชีวิตริมน้ำแบบดั้งเดิม พร้อมชมสถาปัตยกรรมบ้านไม้เก่าแก่</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>การเดินทาง</h2>
+            <div class="info-box">
+                <h3>วิธีการเดินทาง</h3>
+                <p>เดินทางจากกรุงเทพฯ ใช้เส้นทางถนนพระราม 2 มุ่งหน้าสู่จังหวัดสมุทรสงคราม เลี้ยวเข้าสู่ถนนบางน้อย-บางพรม ตลาดตั้งอยู่บริเวณวัดคลองบางน้อย</p>
+                <h3>เวลาเปิด-ปิด</h3>
+                <p>เปิดบริการทุกวัน ตั้งแต่เวลา 06.00 - 14.00 น.<br>
+                วันเสาร์-อาทิตย์และวันหยุดนักขัตฤกษ์ มีพ่อค้าแม่ค้ามาขายสินค้ามากเป็นพิเศษ</p>
+            </div>
+        </section>
+    </div>
+
+    <section class="contact">
+        <div class="container">
+            <h2>ติดต่อสอบถาม</h2>
+            <p>สำนักงานการท่องเที่ยวจังหวัดสมุทรสงคราม<br>
+            โทร: 034-XXX-XXX<br>
+            อีเมล: 67025909@up.ac.th</p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตลาดพลอยจันทบุรี | แหล่งอัญมณีที่มีชื่อเสียงระดับโลก</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            max-width: 800px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #9c27b0;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #7b1fa2;
+            transform: scale(1.05);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #7b1fa2;
+            position: relative;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #9c27b0;
+        }
+        
+        .highlight {
+            color: #9c27b0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-img:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #7b1fa2;
+        }
+        
+        .feature-box {
+            background-color: #f9f4fb;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            height: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .map-container {
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gem-types {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .gem-type {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gem-type:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #9c27b0;
+        }
+        
+        .gem-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #7b1fa2;
+        }
+        
+        .testimonials {
+            margin-top: 50px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            padding-left: 30px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin: 0;
+            color: #7b1fa2;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #7b1fa2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>ตลาดพลอย<span class="highlight">จันทบุรี</span></h1>
+        <p class="subtitle">แหล่งรวมอัญมณีคุณภาพระดับโลก สืบสานตำนานพลอยแดงแห่งตะวันออก มรดกทางวัฒนธรรมอันล้ำค่าของเมืองจันท์</p>
+        <a href="#visit" class="cta-button">วางแผนเยี่ยมชม <i class="fas fa-gem"></i></a>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>เกี่ยวกับ<span class="highlight">ตลาดพลอยจันทบุรี</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHPhAomSZZI5dIFg6m2UD9DlNa1j9IIhg-BA&s');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ประวัติความเป็นมา</h3>
+                        <p>ตลาดพลอยจันทบุรี หรือที่เรียกกันว่า "ตลาดพลอยบ้านสระแก้ว" เป็นแหล่งค้าขายอัญมณีที่มีประวัติศาสตร์ยาวนานกว่า 100 ปี เริ่มก่อตั้งในสมัยรัชกาลที่ 5 เมื่อมีการค้นพบแหล่งพลอยในพื้นที่จังหวัดจันทบุรีและตราด จนทำให้จันทบุรีกลายเป็นศูนย์กลางการค้าพลอยที่สำคัญของประเทศไทยและเอเชียตะวันออกเฉียงใต้</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjiGLm5G3jpZhxefSoEhdEiSUet6_dC9la9w&s');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ตลาดซื้อขายอัญมณี</h3>
+                        <p>ปัจจุบันตลาดพลอยจันทบุรีเปิดทำการซื้อขายทุกวันศุกร์ เสาร์ และอาทิตย์ ตั้งแต่เวลา 10.00-15.00 น. โดยมีพ่อค้าแม่ค้าและนักสะสมอัญมณีจากทั่วโลกเดินทางมาซื้อขายแลกเปลี่ยนอัญมณี ไม่ว่าจะเป็นพลอยดิบ พลอยเจียระไน เครื่องประดับ รวมถึงอุปกรณ์และเครื่องมือที่เกี่ยวข้องกับการเจียระไนอัญมณี</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSigmJm2_GgD-4MUvJUnEh1dOK7peKv1NPDCA&s');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">พลอยแดงจันทบูร</h3>
+                        <p>"พลอยแดงจันท์" หรือทับทิมจันทบูร เป็นอัญมณีที่มีชื่อเสียงโด่งดังไปทั่วโลก ด้วยสีแดงเข้มสวยงามเปล่งประกายเจิดจ้า มีความแข็ง 9 ในสเกลของโมส์ รองจากเพชรเพียงชนิดเดียว ทำให้พลอยแดงจันทบูรเป็นที่ต้องการของนักสะสมและนักลงทุนทั่วโลก และยังเป็นสัญลักษณ์ทางวัฒนธรรมที่สำคัญของจังหวัดจันทบุรี</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gem-types" style="background-color: #f9f4fb;">
+        <div class="container">
+            <h2>อัญมณี<span class="highlight">ที่มีชื่อเสียง</span></h2>
+            <div class="feature-box">
+                <p>ตลาดพลอยจันทบุรีเป็นแหล่งรวมอัญมณีหลากหลายชนิดที่มีคุณภาพสูง โดยเฉพาะพลอยแดงหรือทับทิมที่มีชื่อเสียงระดับโลก นอกจากนี้ยังมีอัญมณีที่น่าสนใจอีกมากมาย ซึ่งแต่ละชนิดมีลักษณะเฉพาะและคุณค่าในตัวเอง</p>
+            </div>
+            
+            <div class="gem-types">
+                <div class="gem-type">
+                    <div class="gem-icon"><i class="fas fa-gem" style="color: #E91E63;"></i></div>
+                    <div class="gem-name">ทับทิม (Ruby)</div>
+                    <p>พลอยสีแดงเข้มที่มีความแข็งสูง มีความเชื่อว่าเป็นอัญมณีแห่งความรักและความมั่งคั่ง</p>
+                </div>
+                
+                <div class="gem-type">
+                    <div class="gem-icon"><i class="fas fa-gem" style="color: #2196F3;"></i></div>
+                    <div class="gem-name">ไพลิน (Sapphire)</div>
+                    <p>พลอยสีน้ำเงินที่มาจากแร่คอรันดัม เชื่อว่าเป็นอัญมณีแห่งปัญญาและความซื่อสัตย์</p>
+                </div>
+                
+                <div class="gem-type">
+                    <div class="gem-icon"><i class="fas fa-gem" style="color: #8BC34A;"></i></div>
+                    <div class="gem-name">เขียวส่อง (Tsavorite)</div>
+                    <p>พลอยสีเขียวสดที่หายากและมีความแวววาวสูง เชื่อว่าเป็นอัญมณีแห่งความอุดมสมบูรณ์</p>
+                </div>
+                
+                <div class="gem-type">
+                    <div class="gem-icon"><i class="fas fa-gem" style="color: #FF9800;"></i></div>
+                    <div class="gem-name">บุษราคัม (Yellow Sapphire)</div>
+                    <p>พลอยสีเหลืองทองอร่าม เชื่อว่าเป็นอัญมณีแห่งความมั่งคั่งและความสำเร็จ</p>
+                </div>
+                
+                <div class="gem-type">
+                    <div class="gem-icon"><i class="fas fa-gem" style="color: #E040FB;"></i></div>
+                    <div class="gem-name">พลอยม่วง (Amethyst)</div>
+                    <p>พลอยสีม่วงเข้มที่สวยงาม เชื่อว่าเป็นอัญมณีที่ช่วยปกป้องผู้สวมใส่จากพลังงานด้านลบ</p>
+                </div>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSigmJm2_GgD-4MUvJUnEh1dOK7peKv1NPDCA&s" alt="พลอยแดงจันทบูร" class="gallery-img">
+                    <div class="gallery-caption">พลอยแดงจันทบูรคุณภาพเยี่ยม สีแดงเข้มสวยงาม</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqdM7-a_dOeHvH9IaxJ-2ESZnerwIGtoqSQ&s" alt="การเจียระไนพลอย" class="gallery-img">
+                    <div class="gallery-caption">กระบวนการเจียระไนพลอยโดยช่างฝีมือชั้นเยี่ยม</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/jpeg;base64,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" alt="บรรยากาศตลาดพลอย" class="gallery-img">
+                    <div class="gallery-caption">บรรยากาศการซื้อขายในตลาดพลอยจันทบุรี</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtcoLgu8sSSzlNXyVt5aWODLO0Kc1WuEo_-g&s" alt="เครื่องประดับจากพลอยจันทบุรี" class="gallery-img">
+                    <div class="gallery-caption">เครื่องประดับที่ผลิตจากอัญมณีคุณภาพดีของจันทบุรี</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2>สัมผัสประสบการณ์<span class="highlight">ตลาดพลอย</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-store"></i> เลือกซื้ออัญมณี</h3>
+                        <p>ตลาดพลอยจันทบุรีเป็นแหล่งรวมอัญมณีหลากหลายชนิดในราคาที่เหมาะสม นักท่องเที่ยวสามารถเลือกซื้อพลอยดิบ พลอยเจียระไน หรือเครื่องประดับสำเร็จรูปได้ตามความชอบ โดยร้านค้าส่วนใหญ่ยินดีให้คำแนะนำเรื่องคุณภาพและราคาของอัญมณีแต่ละชนิด</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-hands"></i> ชมการเจียระไนพลอย</h3>
+                        <p>นักท่องเที่ยวสามารถเข้าชมการสาธิตการเจียระไนพลอยโดยช่างฝีมือท้องถิ่นที่สืบทอดภูมิปัญญามายาวนาน ซึ่งเป็นโอกาสอันดีในการเรียนรู้กระบวนการเปลี่ยนพลอยดิบให้กลายเป็นอัญมณีที่เปล่งประกายงดงาม</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="fas fa-certificate"></i> พิพิธภัณฑ์อัญมณี</h3>
+                        <p>บริเวณใกล้เคียงกับตลาดพลอยมีพิพิธภัณฑ์อัญมณีที่จัดแสดงประวัติความเป็นมาของการทำเหมืองพลอยในจันทบุรี รวมถึงจัดแสดงอัญมณีหายากและมีค่า นักท่องเที่ยวสามารถเข้าชมได้ในราคาย่อมเยาและได้รับความรู้เกี่ยวกับอัญมณีเพิ่มเติม</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" style="background-color: #f9f4fb;">
+        <div class="container">
+            <h2>เสียงจาก<span class="highlight">ผู้มาเยือน</span></h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">ประทับใจมากกับการมาเยือนตลาดพลอยจันทบุรี ได้เห็นพลอยแดงจันท์ของแท้ที่สวยงามมาก และยังได้รับคำแนะนำที่ดีจากพ่อค้าแม่ค้าในตลาด ทำให้ได้ซื้อแหวนพลอยแดงในราคาที่คุ้มค่า</p>
+                    <div class="testimonial-author">
+                        <img src="data:image/jpeg;base64,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" alt="รูปภาพลูกค้า" class="author-img">
+                        <div class="author-info">
+                            <h4>คุณประยุทธ จันโอชา</h4>
+                            <p>นักสะสมอัญมณี, กรุงเทพฯ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">ผมเป็นนักท่องเที่ยวจากต่างชาติที่ชื่นชอบอัญมณี การได้มาเยือนตลาดพลอยจันทบุรีถือเป็นประสบการณ์ที่น่าจดจำ ได้เห็นพลอยคุณภาพดีในราคาที่เหมาะสม และยังได้เรียนรู้วัฒนธรรมการค้าพลอยของไทยที่มีเอกลักษณ์</p>
+                    <div class="testimonial-author">
+                        <img src="data:image/jpeg;base64,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" alt="รูปภาพลูกค้า" class="author-img">
+                        <div class="author-info">
+                            <h4>John Davis</h4>
+                            <p>นักท่องเที่ยว, สหรัฐอเมริกา</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visit">
+        <div class="container">
+            <h2>ข้อมูล<span class="highlight">การเยี่ยมชม</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-title"><i class="far fa-clock"></i> เวลาทำการ</h3>
+                        <p>
+                            <strong>วันที่เปิดทำการ:</strong> ทุกวันศุกร์ เสาร์ และอาทิตย์<br>
+                            <strong>เวลา:</strong> 10.00-15.00 น.<br>
+                            <strong>ช่วงเวลาที่คึกคัก:</strong> 11.00-13.00 น. เป็นช่วงที่มีการซื้อขายคึกคักที่สุด<br>
+                            <strong>วันพิเศษ:</strong> ทุกวันที่ 15 ของเดือนธันวาคม มีงานเทศกาลพลอยจันทบุรีประจำปี
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-content">
+                        <h3 class="card-
