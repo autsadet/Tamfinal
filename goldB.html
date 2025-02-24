@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หาดทรายทอง</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .hero {
+            height: 500px;
+            background-image: url('data:image/jpeg;base64,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');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #1a5f7a;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #1a5f7a;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+        }
+
+        .feature-content h3 {
+            color: #1a5f7a;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .info-box h3 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .activity-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact {
+            background: #1a5f7a;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>หาดทรายทอง</h1>
+            <p>สัมผัสความงามของชายหาดสีทอง พร้อมวิวทะเลสุดตระการตา</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2>เกี่ยวกับหาดทรายทอง</h2>
+            <p>หาดทรายทองเป็นชายหาดที่มีความสวยงามโดดเด่นด้วยเม็ดทรายสีทองละเอียด น้ำทะเลใส และวิวทิวทัศน์ที่สวยงาม เหมาะสำหรับการพักผ่อนและทำกิจกรรมทางน้ำหลากหลายรูปแบบ</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="loopab/หาด.jpg" alt="ชายหาด">
+                    <div class="feature-content">
+                        <h3>ชายหาดสวยงาม</h3>
+                        <p>ชายหาดทรายละเอียดสีทองทอดยาวกว่า 2 กิโลเมตร เหมาะแก่การเดินเล่น พักผ่อน และชมพระอาทิตย์ตก</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="loopab/น้ำ.jpg" alt="กิจกรรมทางน้ำ">
+                    <div class="feature-content">
+                        <h3>กิจกรรมทางน้ำ</h3>
+                        <p>มีกิจกรรมทางน้ำหลากหลาย ทั้งว่ายน้ำ เล่นเจ็ทสกี บานาน่าโบ๊ท และดำน้ำดูปะการัง</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="loopab/อาหาด.jpg" alt="ร้านอาหาร">
+                    <div class="feature-content">
+                        <h3>ร้านอาหารริมหาด</h3>
+                        <p>เลือกทานอาหารทะเลสดๆ ในบรรยากาศริมชายหาด พร้อมวิวทะเลสวยงาม</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>ข้อมูลการท่องเที่ยว</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>การเดินทาง</h3>
+                    <p>- รถยนต์ส่วนตัว: ใช้เส้นทางถนนเพชรเกษม<br>
+                    - รถโดยสารประจำทาง: มีรถบัสจากสถานีขนส่งหลัก<br>
+                    - รถตู้: บริการรถตู้จากจุดนัดพบสำคัญ</p>
+                </div>
+                <div class="info-box">
+                    <h3>ที่พัก</h3>
+                    <p>- โรงแรมระดับ 3-5 ดาว<br>
+                    - รีสอร์ทริมชายหาด<br>
+                    - บังกะโลและเกสต์เฮาส์</p>
+                </div>
+                <div class="info-box">
+                    <h3>ช่วงเวลาที่เหมาะสม</h3>
+                    <p>- ฤดูร้อน: มีนาคม - พฤษภาคม<br>
+                    - ฤดูฝน: มิถุนายน - ตุลาคม<br>
+                    - ฤดูหนาว: พฤศจิกายน - กุมภาพันธ์</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>กิจกรรมที่น่าสนใจ</h2>
+            <div class="activities">
+                <div class="activity-item">
+                    <h3>ว่ายน้ำ</h3>
+                    <p>น้ำทะเลใสสะอาด เหมาะแก่การว่ายน้ำ</p>
+                </div>
+                <div class="activity-item">
+                    <h3>ดำน้ำ</h3>
+                    <p>ชมความงามของปะการังและสัตว์ทะเล</p>
+                </div>
+                <div class="activity-item">
+                    <h3>ตกปลา</h3>
+                    <p>กิจกรรมตกปลาริมชายหาดยามเย็น</p>
+                </div>
+                <div class="activity-item">
+                    <h3>ชมพระอาทิตย์ตก</h3>
+                    <p>จุดชมวิวพระอาทิตย์ตกที่สวยงาม</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="contact">
+        <div class="container">
+            <h2>ติดต่อสอบถาม</h2>
+            <div class="contact-info">
+                <p>ศูนย์บริการนักท่องเที่ยวหาดทรายทอง<br>
+                โทร: 080-604-1861<br>
+                อีเมล: 67025909@up.ac.th<br>
+                เวลาทำการ: 08.00 - 18.00 น. ทุกวัน</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
